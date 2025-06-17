@@ -5,7 +5,7 @@
 
 	<run>
 	<!--  <include name="sanity"/> -->
-	<include name="master"/>
+	<!--<include name="master"/> -->
 	<!--<include name="regression"/> -->
 	<!--  <exlude name="regression"/-->
 	</run>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Suite">
+<suite name="Suite" verbose="8" >
 	<listeners>
 		<listener class-name="utilities.ExtentReportManager" />
 	</listeners>
@@ -8,9 +8,10 @@
 		<parameter name="browser" value="chrome" />
 
 		<classes>
-			<class name="testCases.TC_001_AccountRegistrationTest" />
+			<!--<class name="testCases.TC_001_AccountRegistrationTest" /> -->
 			<!-- <class name="testCases.TC_002_LoginTest"/> -->
 			<!-- <class name="testCases.TC_003_LoginDDT"/> -->
+			<class name="testCases.TC_004_AccountRegistrationDDT"/>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
