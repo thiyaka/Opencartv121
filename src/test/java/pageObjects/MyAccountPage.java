@@ -16,6 +16,10 @@ public class MyAccountPage extends BasePage{
 	@FindBy(xpath = "//div[@class='list-group']//a[text()='Logout']")
 	WebElement btnLogout;
 	
+	@FindBy(xpath = "//div[@id='content']//ul[@class='list-unstyled']/li[1]/*[normalize-space()='Edit your account information']")
+	WebElement lnkEditAcct;
+	
+	
 	public boolean isMyAccountPageExists() {
 		try {
 		return (msgHeading.isDisplayed());
@@ -29,5 +33,11 @@ public class MyAccountPage extends BasePage{
 	public void clklogout() {
 		btnLogout.click();
 	}
+	
+	public void clkEditAcct() {
+		lnkEditAcct.click();
+	}
+	
+	
 
 }
