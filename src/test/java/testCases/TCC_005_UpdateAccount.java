@@ -8,11 +8,12 @@ import pageObjects.LoginPage;
 import pageObjects.MyAccountInfoPage;
 import pageObjects.MyAccountPage;
 import testBase.BaseClass;
+import utilities.DataProviders;
 
 public class TCC_005_UpdateAccount extends BaseClass {
 
-	@Test
-	public void verify_account_updation() {
+	@Test(dataProvider = "LoginData" , dataProviderClass = DataProviders.class)
+	public void verify_account_updation(String email, String psw) {
 		logger.info("*** Starting TCC_005_UpdateAccount ****");
 
 		try {
@@ -22,19 +23,19 @@ public class TCC_005_UpdateAccount extends BaseClass {
 			hp.clickLogin();
 
 			LoginPage lp = new LoginPage(driver);
-			lp.setEmail("frank.wilson@example.com");
-			lp.setPassword("{!](qQo]");
+			lp.setEmail(email);
+			lp.setPassword(psw);
 
 			lp.clickSubmit();
 
-			MyAccountPage mAcct = new MyAccountPage(driver);
-			mAcct.clkEditAcct();
+			MyAccountPage mypage = new MyAccountPage(driver);
+			mypage.clkEditAcct();
 
 			MyAccountInfoPage acctInfo = new MyAccountInfoPage(driver);
 			// acctInfo.setFirstName(null);
 			// acctInfo.setLastName(null);
 			// acctInfo.setEmail(null);
-			acctInfo.setPhoneNumber("8959854085");
+			acctInfo.setPhoneNumber(randomNumber());
 
 			acctInfo.clkSubmit();
 
@@ -42,6 +43,8 @@ public class TCC_005_UpdateAccount extends BaseClass {
 
 			if (SuccessMsg.contains("Success: Your account has been successfully updated.")) {
 				Assert.assertTrue(true);
+				mypage.clklogout();
+				
 			} else {
 				logger.info("Test Failed");
 				logger.debug("Debug logs......");

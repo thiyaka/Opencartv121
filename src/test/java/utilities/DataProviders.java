@@ -14,14 +14,14 @@ public class DataProviders {
 		
 		ExcelUtility xlutil= new ExcelUtility(path);
 		
-		int totalrows= xlutil.getRowCount("Sheet1");
-		int totalcol=xlutil.getCellCount("Sheet1",1);
+		int totalrows= xlutil.getRowCount("Sheet2");
+		int totalcol=xlutil.getCellCount("Sheet2",1);
 		
 		String logindata [][]= new String[totalrows][totalcol];
 		
 		for(int i=1;i<=totalrows;i++) {
 			for(int j=0; j<totalcol;j++) {
-				logindata[i-1][j]= xlutil.getCellData("Sheet1", i, j);
+				logindata[i-1][j]= xlutil.getCellData("Sheet2", i, j);
 			}
 		}
 		
