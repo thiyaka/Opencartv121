@@ -47,6 +47,9 @@ public class AddressBookPage extends BasePage {
 	@FindBy(xpath = "//div[@class='pull-right']/input[@value='Continue']")
 	WebElement btnContinue;
 
+	@FindBy(xpath = "//*[normalize-space()='Your address has been successfully added']")
+	WebElement successMsg;
+
 	public void clkNewAddress() {
 		btnNewAddress.click();
 	}
@@ -101,6 +104,16 @@ public class AddressBookPage extends BasePage {
 	public void clkContinue() {
 
 		btnContinue.click();
+	}
+
+	public String getSuccessmsg() {
+
+		try {
+			return (successMsg.getText());
+		} catch (Exception e) {
+			return (e.getMessage());
+
+		}
 	}
 
 }

@@ -12,7 +12,7 @@
 			<!-- <class name="testCases.TC_002_LoginTest"/> -->
 			<!-- <class name="testCases.TC_003_LoginDDT"/> -->
 			<!--<class name="testCases.TC_004_AccountRegistrationDDT"/> -->
-			<class name="testCases.TCC_005_UpdateAccount"/>
+			<class name="testCases.TCC_006_UpdateAddressBook"/>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
