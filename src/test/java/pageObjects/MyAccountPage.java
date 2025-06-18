@@ -16,11 +16,14 @@ public class MyAccountPage extends BasePage{
 	@FindBy(xpath = "//div[@class='list-group']//a[text()='Logout']")
 	WebElement btnLogout;
 	
-	@FindBy(xpath = "//div[@id='content']//ul[@class='list-unstyled']/li[1]/*[normalize-space()='Edit your account information']")
+	@FindBy(xpath = "//div[@id='content']//ul[@class='list-unstyled']/li/*[normalize-space()='Edit your account information']")
 	WebElement lnkEditAcct;
 	
 	@FindBy(xpath="//div[@class='list-group']/a[contains(text(),'Address Book')]")
 	WebElement btnAddressBook;
+	
+	@FindBy(xpath = "//div[@id='content']//ul[@class='list-unstyled']/li/*[normalize-space()='Modify your address book entries']")
+	WebElement lnkEditAddress;
 	
 	
 	public boolean isMyAccountPageExists() {
@@ -45,6 +48,9 @@ public class MyAccountPage extends BasePage{
 		btnAddressBook.click();
 	}
 	
+	public void clkEditAddress() {
+		lnkEditAddress.click();
+	}
 	
 
 }
