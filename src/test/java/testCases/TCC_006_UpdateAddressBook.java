@@ -16,44 +16,55 @@ public class TCC_006_UpdateAddressBook extends BaseClass {
 	@Test
 	public void verify_Address_update() {
 
-		HomePage hp = new HomePage(driver);
+		logger.info("*** Starting TCC_005_UpdateAccount ****");
 
-		hp.clickMyaccount();
-		hp.clickLogin();
+		try {
+			HomePage hp = new HomePage(driver);
 
-		LoginPage lp = new LoginPage(driver);
-		lp.setEmail("frank.wilson@example.com"); //frank.wilson@example.com
+			hp.clickMyaccount();
+			hp.clickLogin();
 
-		lp.setPassword("{!](qQo]");//{!](qQo]
-		lp.clickSubmit();
+			LoginPage lp = new LoginPage(driver);
+			lp.setEmail("frank.wilson@example.com"); // frank.wilson@example.com
 
-		MyAccountPage acctPage = new MyAccountPage(driver);
-		acctPage.clkAddressBook();
+			lp.setPassword("{!](qQo]");// {!](qQo]
+			lp.clickSubmit();
 
-		AddressBookPage addressBook = new AddressBookPage(driver);
-		addressBook.clkNewAddress();
-		addressBook.setFirstName("Hari");
-		addressBook.setLastName("Batman");
-		addressBook.setCompanyName("Bruceveynce");
-		addressBook.setAddress("Dark");
-		addressBook.setCity("Gotham");
+			MyAccountPage acctPage = new MyAccountPage(driver);
+			acctPage.clkAddressBook();
 
-		// dropdown
-		addressBook.selectCountry("India");
-		addressBook.selectZone("Tamil Nadu");
+			AddressBookPage addressBook = new AddressBookPage(driver);
+			addressBook.clkNewAddress();
+			addressBook.setFirstName("Hari");
+			addressBook.setLastName("Batman");
+			addressBook.setCompanyName("Bruceveynce");
+			addressBook.setAddress("Dark");
+			addressBook.setCity("Gotham");
 
-		// radiobtn
+			// dropdown
+			addressBook.selectCountry("India");
+			addressBook.selectZone("Tamil Nadu");
 
-		addressBook.selectDefaultAddress("Yes");
+			// radiobtn
 
-		addressBook.clkContinue();
+			addressBook.selectDefaultAddress("Yes");
 
-		String successMsg = addressBook.getSuccessmsg();
+			addressBook.clkContinue();
 
-		if (successMsg.equalsIgnoreCase("Your address has been successfully added")) {
-			Assert.assertTrue(true);
-		}else {
-			Assert.assertTrue(false);
+			String successMsg = addressBook.getSuccessmsg();
+
+			if (successMsg.equalsIgnoreCase("Your address has been successfully added")) {
+				Assert.assertTrue(true);
+			} else {
+				logger.info("Test Failed");
+				logger.debug("Debug logs......");
+				Assert.assertTrue(false);
+			}
+		} catch (Exception e) {
+			
+			Assert.fail();
+		} finally {
+			logger.info("***** Finished TCC_006_UpdateAddressBook ***");
 		}
 
 	}
