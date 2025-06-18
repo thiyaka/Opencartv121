@@ -1,9 +1,15 @@
 package pageObjects;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddressBookPage extends BasePage {
 
@@ -49,7 +55,11 @@ public class AddressBookPage extends BasePage {
 
 	@FindBy(xpath = "//*[normalize-space()='Your address has been successfully added']")
 	WebElement successMsg;
-
+	
+	@FindBy(xpath="//a[contains(text(),'Edit')]/ancestor::div[@id='content']/div/table/tbody/tr/td[contains(text(),'Hari')]/following-sibling::td/a[contains(text(),'Edit')]")
+	WebElement btnEditAddress;
+	
+	
 	public void clkNewAddress() {
 		btnNewAddress.click();
 	}
@@ -71,6 +81,7 @@ public class AddressBookPage extends BasePage {
 	}
 
 	public void setCity(String city) {
+		txtCity.clear();
 		txtCity.sendKeys(city);
 	}
 
@@ -109,11 +120,20 @@ public class AddressBookPage extends BasePage {
 	public String getSuccessmsg() {
 
 		try {
-			return (successMsg.getText());
+		//	return (successMsg.getText());
+			WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(20));
+			wait.until(ExpectedConditions.visibilityOfElementLocated((By) successMsg));
+			
+			return(successMsg.getText());
 		} catch (Exception e) {
 			return (e.getMessage());
 
 		}
+	}
+	
+	public void clkEditAddress() {
+		
+		btnEditAddress.click();
 	}
 
 }
