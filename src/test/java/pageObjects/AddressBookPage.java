@@ -59,24 +59,33 @@ public class AddressBookPage extends BasePage {
 	@FindBy(xpath="//a[contains(text(),'Edit')]/ancestor::div[@id='content']/div/table/tbody/tr/td[contains(text(),'Hari')]/following-sibling::td/a[contains(text(),'Edit')]")
 	WebElement btnEditAddress;
 	
+	@FindBy(xpath="//a[contains(text(),'Edit')]/ancestor::div[@id='content']/div/table/tbody/tr/td[contains(text(),'Hari')]/following-sibling::td/a[contains(text(),'Delete')]")
+	WebElement btnDeleteAddress;
+	
+	@FindBy(xpath = "//*[normalize-space()='Your address has been successfully deleted']")
+	WebElement deleteMsg;
 	
 	public void clkNewAddress() {
 		btnNewAddress.click();
 	}
 
 	public void setFirstName(String fname) {
+		txtFirstname.clear();
 		txtFirstname.sendKeys(fname);
 	}
 
 	public void setLastName(String lname) {
+		txtLastname.clear();
 		txtLastname.sendKeys(lname);
 	}
 
 	public void setCompanyName(String company) {
+		txtCompany.clear();
 		txtCompany.sendKeys(company);
 	}
 
 	public void setAddress(String address) {
+		txtAddress1.clear();
 		txtAddress1.sendKeys(address);
 	}
 
@@ -86,6 +95,7 @@ public class AddressBookPage extends BasePage {
 	}
 
 	public void setPostcod(String pcode) {
+		txtPostcode.clear();
 		txtPostcode.sendKeys(pcode);
 	}
 
@@ -134,6 +144,19 @@ public class AddressBookPage extends BasePage {
 	public void clkEditAddress() {
 		
 		btnEditAddress.click();
+	}
+	
+	public void clkDeleteAddress() {
+		btnDeleteAddress.click();
+	}
+	
+	public String getDeleteMsg() {
+		try {
+			return (deleteMsg.getText());
+		} catch (Exception e) {
+			return (e.getMessage());
+
+		}
 	}
 
 }
